@@ -40,7 +40,6 @@
                   radial-gradient(ellipse at 80% 80%, #1f1525 0%, transparent 50%);
     }
 
-    /* Floating particles */
     .particles {
       position: fixed;
       inset: 0;
@@ -150,7 +149,7 @@
       gap: 0.5rem;
       margin-top: 1.8rem;
       padding: 0.9rem 2.1rem;
-      font-family: 'Playfair Display', 'Vazirmatn', serif;
+      font-family: 'Vazirmatn', 'Playfair Display', serif;
       font-size: 1rem;
       font-weight: 500;
       color: var(--bg-deep);
@@ -175,7 +174,6 @@
       opacity: 0.7;
     }
 
-    /* Stage 1 */
     #stage1 .intro-badge {
       font-size: 0.85rem;
       letter-spacing: 0.28em;
@@ -188,7 +186,6 @@
       font-size: clamp(1.9rem, 6.5vw, 2.8rem);
     }
 
-    /* Stage 2 */
     #stage2 .content {
       max-width: 380px;
     }
@@ -205,7 +202,6 @@
       margin-top: 1.1rem;
     }
 
-    /* Stage 3 */
     #stage3 .message-card {
       max-width: 420px;
       width: 100%;
@@ -216,14 +212,24 @@
       box-shadow: 0 12px 48px rgba(0, 0, 0, 0.35);
     }
 
+    #stage3 .heart-top {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+      text-align: center;
+    }
+
+    #stage3 .persian p {
+      margin-bottom: 0.8rem;
+    }
+
     #stage3 .signature {
-      margin-top: 1.5rem;
+      margin-top: 1.2rem;
       font-size: 1.05rem;
       color: var(--rose);
       font-weight: 600;
+      text-align: center;
     }
 
-    /* Stage 4 - Gift & Photos */
     .gift-container {
       cursor: pointer;
       text-align: center;
@@ -274,7 +280,6 @@
       object-fit: cover;
     }
 
-    /* Stage 5 */
     #stage5 .age {
       font-size: clamp(2.4rem, 9vw, 3.4rem);
       font-weight: 500;
@@ -304,7 +309,7 @@
 
   <div class="stages">
     <!-- STAGE 1 -->
-    <section class="stage active" id="stage1">
+    <section class="stage active" id="stage1" data-stage="1">
       <div class="glow-orb" style="top: 20%; left: 50%; transform: translateX(-50%);"></div>
       <div class="english">
         <p class="intro-badge">A Private Moment</p>
@@ -315,7 +320,7 @@
     </section>
 
     <!-- STAGE 2 -->
-    <section class="stage" id="stage2">
+    <section class="stage" id="stage2" data-stage="2">
       <div class="content english">
         <h1>Some people stay</h1>
         <div class="divider"></div>
@@ -326,22 +331,26 @@
       </div>
     </section>
 
-    <!-- STAGE 3 -->
-    <section class="stage" id="stage3">
-      <div class="message-card persian">
-        <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">❤️</div>
-        <p>سلام جان دلم، مامانی عزیز و مقبولم ❤️</p>
-        <p>امروز خیلی خیلی خوشحالم، چون روزی است که ۱۷ سال قبل، در همین روز، فرشته‌ای به این زیبایی و مقبولی به دنیا آمد.</p>
-        <p>و امروز خوشبختانه می‌توانم بگویم که این مامانی مقبول، عشق من است و خیلی خیلی زیاد دوستش دارم.</p>
-        <p>از صمیم قلب، یوسف، تولدت را تبریک می‌گوید. امیدوارم همیشه در زندگیت کامیاب، سرفراز، موفق و سربلند باشی و خداوند همیشه تو را از هر بلا و بدی دور نگه دارد.</p>
-        <p>تولدت مبارک عزیز دلم؛ ان‌شاءالله همیشه سالم، خوشحال و لبخند به لب باشی. ❤️</p>
+    <!-- STAGE 3: Main Birthday Message (Persian) -->
+    <section class="stage" id="stage3" data-stage="3">
+      <div class="message-card">
+        <div class="heart-top">❤️</div>
+        <div class="persian">
+          <p>سلام به مامانی عزیز و مقبولم ❤️</p>
+          <p>خدا کنه که خوب، صحتمند و سرحال باشی عزیز دلم. امروز خیلی خیلی خوشحال استم، چون امروز یکی از مهم‌ترین روزهای زندگیم (تولد عشقم) است؛ در این روز، فرشته‌ای به این زیبایی و مقبولی به اسم اسما خانم به دنیا آمد.</p>
+          <p>و امروز خوشبختانه می‌توانم بگویم که این دختر مقبول، مهم‌ترین فرد زندگی من است و خیلی خیلی زیاد دوستش دارم.</p>
+          <p>از صمیم قلب، یوسف، تولدتان را برای تان تبریک عرض می‌دارد. امیدوارم همیشه در زندگیت کامیاب، سرفراز، موفق و سربلند باشی و خداوند همیشه تو را از هر بلا و بدی دور نگه دارد.</p>
+          <p>تولدت مبارک عزیز دلم؛ ان‌شاءالله همیشه سالم، خوشحال و لبخند به لب باشی. ❤️</p>
+        </div>
         <p class="signature">— یوسف</p>
       </div>
-      <button class="btn english" onclick="goToStage(4)" style="margin-top: 1.5rem;">A Little Gift →</button>
+      <button class="btn" onclick="goToStage(4)" style="margin-top: 1.8rem;">
+        یک سورپرایز دیگه →
+      </button>
     </section>
 
     <!-- STAGE 4 -->
-    <section class="stage" id="stage4">
+    <section class="stage" id="stage4" data-stage="4">
       <div class="english">
         <h1>Unwrap Your Gift 🎁</h1>
         <p id="giftInstruction" style="color: var(--text-soft); font-style: italic; margin-top: 0.5rem;">Tap the gift box to open your photos</p>
@@ -361,7 +370,7 @@
     </section>
 
     <!-- STAGE 5 -->
-    <section class="stage" id="stage5">
+    <section class="stage" id="stage5" data-stage="5">
       <div class="final-content english">
         <h1>Happy Birthday</h1>
         <div class="age">17th Birthday ✨</div>
