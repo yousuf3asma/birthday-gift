@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <style>
     :root {
       --bg-deep: #0e0a11;
@@ -257,11 +258,16 @@
       cursor: pointer;
       text-align: center;
       margin: 2rem 0;
-      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease;
     }
 
     .gift-container:hover {
       transform: scale(1.1);
+    }
+
+    .gift-container.opened {
+      transform: scale(1.8) rotate(15deg);
+      opacity: 0;
     }
 
     .gift-box {
@@ -275,11 +281,10 @@
       50% { transform: translateY(-16px); }
     }
 
-    /* Photos are strictly separated and clear */
     .gallery-container {
       display: none;
       flex-direction: column;
-      gap: 40px; /* High spacing so images don't overlap */
+      gap: 40px;
       width: 100%;
       max-width: 350px;
       margin-top: 1.5rem;
@@ -328,8 +333,8 @@
       display: block;
     }
 
-    /* Stage 5 - Poem & Sweet Ending */
-    #stage5 .poem-card {
+    /* Stage 5 & 6 Cards */
+    .card-style {
       max-width: 420px;
       width: 100%;
       background: linear-gradient(160deg, rgba(42, 26, 40, 0.88) 0%, rgba(26, 18, 32, 0.92) 100%);
@@ -344,21 +349,19 @@
     #stage5 .persian-poem {
       font-family: 'Vazirmatn', sans-serif;
       direction: rtl;
-      line-height: 2.4;
-      font-size: 1.08rem;
+      line-height: 2.5;
+      font-size: 1.1rem;
       color: var(--gold-soft);
       margin: 1rem 0;
     }
 
-    #stage5 .sweet-message {
+    #stage6 .sweet-message {
       font-family: 'Vazirmatn', sans-serif;
       direction: rtl;
-      line-height: 2.1;
-      font-size: 1.02rem;
+      line-height: 2.2;
+      font-size: 1.05rem;
       color: var(--cream);
-      margin-top: 1.4rem;
-      padding-top: 1.2rem;
-      border-top: 1px dashed rgba(232, 180, 184, 0.3);
+      margin: 1rem 0;
     }
 
     .glow-orb {
@@ -369,11 +372,6 @@
       background: radial-gradient(circle, rgba(232, 180, 184, 0.15) 0%, transparent 70%);
       pointer-events: none;
       z-index: -1;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -414,11 +412,11 @@
             سلام به مامانی عزیز و مقبولم 💙
           </p>
           <p>
-            خدا کنه که خوب، صحتمند و سرحال باشی عزیز دلم.  
+            خدا کنه که خوب، صحتمند و سرحال باشید عزیز دلم.  
             امروز خیلی خیلی خوشحال استم، چون امروز یکی از مهم‌ترین روزهای زندگیم (تولد عشقم) است؛ در این روز، فرشته‌ای به این زیبایی و مقبولی به اسم اسما خانم به دنیا آمده.
           </p>
           <p>
-            و خوشبختانه می‌توان گفت ؛ که این دختر مقبول، مهم‌ترین فرد زندگی ایشان میباشد و خیلی زیاد دوستش هم دارد و عاشق دیوانه وار اسمای خود میباش .
+           و خوشبختانه می‌توان گفت ؛ که این دختر مقبول، مهم‌ترین فرد زندگی ایشان میباشد و خیلی زیاد دوستش هم دارد و عاشق دیوانه وار اسمای خود میباشد  .
           </p>
           <p>
              یوسف الرحمٰن، تولدتان را برای تان تبریک و تهنیت عرض می‌دارد. و امید دارد که همیشه در زندگیتان کامیاب، ، موفق و سربلند و سرفراز باشید و همیشه در پناه خداوند باشید.
@@ -454,24 +452,32 @@
       <button class="btn english" id="nextStageBtn" onclick="goToStage(5)" style="display: none; margin-top: 2rem;">One Last Thing →</button>
     </section>
 
-    <!-- STAGE 5: Persian Poem & Sweet Message -->
+    <!-- STAGE 5: Persian Poem -->
     <section class="stage" id="stage5" data-stage="5">
-      <div class="poem-card">
-        <div class="heart-top">💖</div>
+      <div class="card-style">
+        <div class="heart-top">📜</div>
         <div class="persian-poem">
           <p>به یاد چشم مستت، باده در پیمانه می‌ریزم</p>
           <p>به دور شمع رویت، خویش را پروانه می‌سازم</p>
           <p>اگر از من گریزانی، منم پابرجا در عشقت</p>
           <p>به جز تو با کسی دگر، منِ دیوانه نسازم</p>
         </div>
-        
+        <button class="btn" onclick="goToStage(6)">
+          یک پیام دگه ❤️
+        </button>
+      </div>
+    </section>
+
+    <!-- STAGE 6: Final Sweet Message -->
+    <section class="stage" id="stage6" data-stage="6">
+      <div class="card-style">
+        <div class="heart-top">💖</div>
         <div class="sweet-message">
           <p>جان دلم ، اسمای قشنگم..🌸</p>
           <p>تو قشنگ‌ترین اتفاق زندگی من استی. بودنت همیشه قلبم را گرم می‌کند و لبخندت تمام دنیای من است. تا ابد دوستت دارم نازنین من! 💕✨</p>
         </div>
-
         <div class="divider"></div>
-        <p style="font-weight: 600; color: var(--rose); font-size: 1.1rem; text-align: center;">همیشه در قلب من هستی ❤️</p>
+        <p style="font-weight: 600; color: var(--rose); font-size: 1.15rem; text-align: center;">همیشه در قلب من هستی ❤️</p>
       </div>
     </section>
   </div>
@@ -496,20 +502,26 @@
         next.classList.add('active');
         currentStage = n;
         isTransitioning = false;
-      }, 1000); /* 1 second gentle romantic delay */
+      }, 1000);
     }
 
     function openGift() {
-      const giftBox = document.getElementById('giftBoxContainer');
+      const giftContainer = document.getElementById('giftBoxContainer');
       const photosGrid = document.getElementById('photosGrid');
       const instruction = document.getElementById('giftInstruction');
       const nextBtn = document.getElementById('nextStageBtn');
 
-      giftBox.style.transform = 'scale(0) rotate(180deg)';
-      giftBox.style.transition = 'all 1s ease';
+      giftContainer.classList.add('opened');
+
+      // Trigger Confetti Party Effects
+      confetti({
+        particleCount: 80,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
 
       setTimeout(() => {
-        giftBox.style.display = 'none';
+        giftContainer.style.display = 'none';
         instruction.style.display = 'none';
         photosGrid.classList.add('show');
         
@@ -517,7 +529,7 @@
           nextBtn.style.display = 'inline-flex';
           nextBtn.style.animation = 'fadeIn 1.2s ease forwards';
         }, 1800);
-      }, 800);
+      }, 600);
     }
 
     function createParticles() {
