@@ -43,7 +43,7 @@
                   radial-gradient(ellipse at 80% 80%, #1f1525 0%, transparent 50%);
     }
 
-    /* Floating particles (stars / soft hearts) */
+    /* Floating particles */
     .particles {
       position: fixed;
       inset: 0;
@@ -58,14 +58,6 @@
       background: var(--rose);
       opacity: 0.25;
       animation: float 18s infinite ease-in-out;
-    }
-
-    .particle.star {
-      background: transparent;
-      width: 0;
-      height: 0;
-      border-radius: 0;
-      box-shadow: 0 0 4px 1px rgba(245, 230, 200, 0.6);
     }
 
     .particle.heart {
@@ -104,7 +96,7 @@
       75% { transform: translateY(-40px) translateX(5px) scale(1.02); opacity: 0.3; }
     }
 
-    /* Stage container */
+    /* Stages container */
     .stages {
       position: relative;
       width: 100%;
@@ -192,40 +184,11 @@
       overflow: hidden;
     }
 
-    .btn::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.25) 50%, transparent 70%);
-      transform: translateX(-120%);
-      transition: transform 0.6s ease;
-    }
-
     .btn:hover {
       transform: translateY(-3px) scale(1.02);
       box-shadow: 0 8px 32px var(--glow-strong),
                   0 0 0 1px rgba(255, 255, 255, 0.12) inset;
       filter: brightness(1.05);
-    }
-
-    .btn:active {
-      transform: translateY(-1px) scale(0.99);
-    }
-
-    .btn:hover::after {
-      transform: translateX(120%);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--gold-soft);
-      border: 1px solid rgba(232, 180, 184, 0.45);
-      box-shadow: 0 0 20px rgba(232, 180, 184, 0.12);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(232, 180, 184, 0.1);
-      border-color: var(--rose);
     }
 
     /* Decorative line */
@@ -237,7 +200,7 @@
       opacity: 0.7;
     }
 
-    /* Stage 1 — Intro */
+    /* Stage 1 */
     #stage1 .intro-badge {
       font-size: 0.85rem;
       letter-spacing: 0.28em;
@@ -245,38 +208,22 @@
       color: var(--rose);
       margin-bottom: 1.6rem;
       opacity: 0.9;
-      animation: softPulse 3s ease-in-out infinite;
     }
 
     #stage1 h1 {
-      font-size: clamp(1.9rem, 6.5vw, 2.8rem);
+      font-size: clamp(2rem, 6.5vw, 3rem);
       color: var(--cream);
-      max-width: 320px;
+      max-width: 360px;
       margin: 0 auto;
     }
 
-    #stage1 .sparkle {
-      display: inline-block;
-      animation: twinkle 2.4s ease-in-out infinite;
-    }
-
-    @keyframes softPulse {
-      0%, 100% { opacity: 0.75; }
-      50% { opacity: 1; }
-    }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(1.15); }
-    }
-
-    /* Stage 2 — Emotional English */
+    /* Stage 2 */
     #stage2 .content {
-      max-width: 380px;
+      max-width: 400px;
     }
 
     #stage2 h1 {
-      font-size: clamp(1.55rem, 5.2vw, 2.1rem);
+      font-size: clamp(1.8rem, 5.5vw, 2.3rem);
       color: var(--gold-soft);
       margin-bottom: 0.4rem;
     }
@@ -288,35 +235,15 @@
       margin-top: 1.1rem;
     }
 
-    /* Stage 3 — Main Persian message */
+    /* Stage 3 — Persian */
     #stage3 .message-card {
-      max-width: 420px;
+      max-width: 440px;
       width: 100%;
       background: linear-gradient(160deg, rgba(42, 26, 40, 0.85) 0%, rgba(26, 18, 32, 0.9) 100%);
       border: 1px solid rgba(232, 180, 184, 0.18);
       border-radius: 20px;
       padding: 2rem 1.5rem 1.8rem;
-      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.35),
-                  0 0 40px rgba(232, 180, 184, 0.08);
-      position: relative;
-      overflow: hidden;
-    }
-
-    #stage3 .message-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--rose), transparent);
-      opacity: 0.6;
-    }
-
-    #stage3 .heart-top {
-      font-size: 1.5rem;
-      margin-bottom: 0.9rem;
-      opacity: 0.9;
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.35);
     }
 
     #stage3 .persian {
@@ -326,40 +253,40 @@
       line-height: 2.05;
     }
 
-    #stage3 .persian p {
-      margin-bottom: 1.15rem;
-    }
-
-    #stage3 .persian p:last-child {
-      margin-bottom: 0;
-    }
-
     #stage3 .signature {
       margin-top: 1.6rem;
-      font-size: 0.95rem;
+      font-size: 1.05rem;
       color: var(--rose);
-      font-weight: 500;
-      letter-spacing: 0.02em;
+      font-weight: 600;
+      text-align: left;
     }
 
-    /* Stage 4 — Photo gallery */
-    #stage4 .gallery-header {
+    /* Stage 4 — Memories Intro Page */
+    #stage4 .memories-card {
+      max-width: 420px;
       text-align: center;
-      margin-bottom: 1.5rem;
+      background: rgba(26, 18, 32, 0.6);
+      border: 1px solid rgba(232, 180, 184, 0.2);
+      border-radius: 24px;
+      padding: 2.5rem 1.8rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
     }
 
     #stage4 h1 {
-      font-size: clamp(1.5rem, 5vw, 2rem);
+      font-size: clamp(2rem, 6vw, 2.6rem);
       color: var(--gold-soft);
+      font-family: 'Playfair Display', serif;
     }
 
-    #stage4 .subtitle {
-      font-size: 0.95rem;
+    #stage4 p {
+      font-size: 1.15rem;
       color: var(--text-soft);
-      margin-top: 0.4rem;
       font-style: italic;
+      margin-top: 1.2rem;
+      line-height: 1.8;
     }
 
+    /* Stage 5 — Gallery */
     .gallery {
       width: 100%;
       max-width: 360px;
@@ -383,8 +310,7 @@
       position: relative;
       background: linear-gradient(145deg, #2a1f2e, #1a1220);
       border: 1px solid rgba(232, 180, 184, 0.22);
-      box-shadow: 0 10px 36px rgba(0, 0, 0, 0.4),
-                  0 0 24px rgba(232, 180, 184, 0.1);
+      box-shadow: 0 10px 36px rgba(0, 0, 0, 0.4);
     }
 
     .photo-frame img {
@@ -392,14 +318,8 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.6s ease;
     }
 
-    .photo-frame:hover img {
-      transform: scale(1.04);
-    }
-
-    /* Placeholder styling — replace src with your photos */
     .photo-placeholder {
       width: 100%;
       height: 100%;
@@ -411,11 +331,6 @@
       color: var(--text-soft);
       font-size: 0.9rem;
       background: linear-gradient(160deg, rgba(42, 26, 40, 0.9), rgba(26, 18, 32, 0.95));
-    }
-
-    .photo-placeholder span {
-      font-size: 2rem;
-      opacity: 0.5;
     }
 
     .gallery-nav {
@@ -435,21 +350,6 @@
       color: var(--gold-soft);
       font-size: 1.1rem;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-
-    .nav-btn:hover {
-      background: rgba(232, 180, 184, 0.15);
-      border-color: var(--rose);
-      transform: scale(1.08);
-    }
-
-    .nav-btn:disabled {
-      opacity: 0.3;
-      pointer-events: none;
     }
 
     .dots {
@@ -462,63 +362,15 @@
       height: 7px;
       border-radius: 50%;
       background: rgba(232, 180, 184, 0.3);
-      transition: all 0.3s ease;
       cursor: pointer;
     }
 
     .dot.active {
       background: var(--rose);
       transform: scale(1.25);
-      box-shadow: 0 0 8px var(--glow);
     }
 
-    /* Stage 5 — Final */
-    #stage5 .final-content {
-      max-width: 360px;
-      text-align: center;
-    }
-
-    #stage5 h1 {
-      font-size: clamp(1.7rem, 6vw, 2.4rem);
-      color: var(--gold-soft);
-      margin-bottom: 0.3rem;
-    }
-
-    #stage5 .age {
-      font-size: clamp(2.4rem, 9vw, 3.4rem);
-      font-weight: 500;
-      background: linear-gradient(135deg, var(--rose) 0%, var(--gold) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin: 0.6rem 0 1.2rem;
-      letter-spacing: 0.02em;
-    }
-
-    #stage5 p {
-      font-size: clamp(1.08rem, 3.8vw, 1.22rem);
-      color: var(--text-soft);
-      font-style: italic;
-      line-height: 1.75;
-      margin-bottom: 0.9rem;
-    }
-
-    #stage5 .closing {
-      margin-top: 1.6rem;
-      font-size: 1.15rem;
-      color: var(--cream);
-      font-weight: 500;
-    }
-
-    #stage5 .hearts {
-      margin-top: 1.8rem;
-      font-size: 1.4rem;
-      letter-spacing: 0.4rem;
-      opacity: 0.85;
-      animation: softPulse 3.5s ease-in-out infinite;
-    }
-
-    /* Soft glow orb behind content */
+    /* Glow orb */
     .glow-orb {
       position: absolute;
       width: 280px;
@@ -530,33 +382,7 @@
       filter: blur(10px);
     }
 
-    /* Responsive refinements */
-    @media (max-width: 380px) {
-      .stage {
-        padding: 1.4rem 1.1rem;
-      }
-
-      #stage3 .message-card {
-        padding: 1.6rem 1.2rem 1.5rem;
-      }
-
-      .btn {
-        padding: 0.88rem 1.7rem;
-        font-size: 0.98rem;
-      }
-    }
-
-    @media (min-width: 500px) {
-      #stage3 .message-card {
-        padding: 2.3rem 2rem 2.1rem;
-      }
-
-      .gallery {
-        max-width: 400px;
-      }
-    }
-
-    /* Fade-in helper for staged text */
+    /* Animations */
     .fade-in {
       animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
@@ -567,29 +393,22 @@
     .fade-in-delay-4 { animation-delay: 0.6s; }
 
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(16px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <!-- Soft floating particles -->
   <div class="particles" id="particles" aria-hidden="true"></div>
 
   <div class="stages">
-    <!-- ==================== STAGE 1: Exciting English Intro ==================== -->
+    <!-- ==================== STAGE 1: Beautiful English Intro ==================== -->
     <section class="stage active" id="stage1" data-stage="1">
       <div class="glow-orb" style="top: 20%; left: 50%; transform: translateX(-50%);"></div>
       <div class="english">
-        <p class="intro-badge fade-in">A private moment</p>
+        <p class="intro-badge fade-in">A Special Moment For You</p>
         <h1 class="fade-in fade-in-delay-1">
-          WAIT… THIS IS<br />FOR YOU <span class="sparkle">👀✨</span>
+          Hold On…<br />Something Magical Is Waiting For You ✨
         </h1>
         <div class="divider fade-in fade-in-delay-2"></div>
         <button class="btn fade-in fade-in-delay-3" onclick="goToStage(2)">
@@ -598,50 +417,41 @@
       </div>
     </section>
 
-    <!-- ==================== STAGE 2: Emotional English Message ==================== -->
+    <!-- ==================== STAGE 2: Heartfelt English Message ==================== -->
     <section class="stage" id="stage2" data-stage="2">
       <div class="glow-orb" style="top: 15%; right: 10%;"></div>
       <div class="content english">
-        <h1 class="fade-in">Some people stay</h1>
+        <h1 class="fade-in">To My Dearest Asma</h1>
         <div class="divider fade-in fade-in-delay-1"></div>
         <p class="fade-in fade-in-delay-2">
-          Distance can stretch the miles,<br />
-          but it can never stretch the heart.
+          "Some people make the world brighter just by being in it."
         </p>
         <p class="fade-in fade-in-delay-3">
-          There are souls who become quieter stars in our sky —  
-          farther away, yet somehow brighter,  
-          more constant, more precious.
-        </p>
-        <p class="fade-in fade-in-delay-4">
-          You became one of those stars.
+          Every moment with you is a gift, and every memory we share is written in gold. You are the most beautiful part of my story.
         </p>
         <button class="btn fade-in fade-in-delay-4" onclick="goToStage(3)" style="animation-delay: 0.75s;">
-          Continue →
+          READ MY HEART →
         </button>
       </div>
     </section>
 
     <!-- ==================== STAGE 3: Main Birthday Message (Persian) ==================== -->
-    <!-- 
-      EDIT THIS SECTION to change the main message.
-      Keep the class "persian" for proper RTL and font.
-    -->
     <section class="stage" id="stage3" data-stage="3">
       <div class="message-card">
-        <div class="heart-top">❤️</div>
+        <div class="heart-top" style="text-align: center; font-size: 1.5rem; margin-bottom: 0.8rem;">❤️</div>
         <div class="persian">
           <p>
-            سلام جان دلم، مامانی عزیز و مقبولم ❤️
+            سلام به مامانی عزیز و مقبولم ❤️
           </p>
           <p>
-            امروز خیلی خیلی خوشحالم، چون روزی است که ۱۷ سال قبل، در همین روز، فرشته‌ای به این زیبایی و مقبولی به دنیا آمد.
+            خدا کنه که خوب، صحتمند و سرحال باشی عزیز دلم.  
+            امروز خیلی خیلی خوشحال استم، چون امروز یکی از مهم‌ترین روزهای زندگیم (تولد عشقم) است؛ در این روز، فرشته‌ای به این زیبایی و مقبولی به اسم اسما خانم به دنیا آمد.
           </p>
           <p>
-            و امروز خوشبختانه می‌توانم بگویم که این مامانی مقبول، عشق من است و خیلی خیلی زیاد دوستش دارم.
+            و امروز خوشبختانه می‌توانم بگویم که این دختر مقبول، مهم‌ترین فرد زندگی من است و خیلی خیلی زیاد دوستش دارم.
           </p>
           <p>
-            از صمیم قلب، یوسف، تولدت را تبریک می‌گوید. امیدوارم همیشه در زندگیت کامیاب، سرفراز، موفق و سربلند باشی و خداوند همیشه تو را از هر بلا و بدی دور نگه دارد.
+            از صمیم قلب، یوسف، تولدتان را برای تان تبریک عرض می‌دارد. امیدوارم همیشه در زندگیت کامیاب، سرفراز، موفق و سربلند باشی و خداوند همیشه تو را از هر بلا و بدی دور نگه دارد.
           </p>
           <p>
             تولدت مبارک عزیز دلم؛ ان‌شاءالله همیشه سالم، خوشحال و لبخند به لب باشی. ❤️
@@ -650,25 +460,33 @@
         <p class="signature">— یوسف</p>
       </div>
       <button class="btn" onclick="goToStage(4)" style="margin-top: 1.8rem;">
-        یک سورپرایز دیگه →
+        OUR MEMORIES ✨ →
       </button>
     </section>
 
-    <!-- ==================== STAGE 4: Photo Gallery ==================== -->
-    <!-- 
-      REPLACE THE PHOTO PLACEHOLDERS BELOW with your own images.
-      Simply change the src of each <img> tag, or replace the entire .photo-placeholder div
-      with an <img> like this:
-
-      <img src="your-photo-1.jpg" alt="Memory 1" />
-
-      Recommended: 3:4 portrait ratio, good quality, not too large (under 1MB each if possible).
-      You can also use absolute URLs if hosting images elsewhere.
-    -->
+    <!-- ==================== STAGE 4: Memories Intro Page (English) ==================== -->
     <section class="stage" id="stage4" data-stage="4">
-      <div class="gallery-header english">
-        <h1 class="fade-in">A few moments</h1>
-        <p class="subtitle fade-in fade-in-delay-1">that live quietly in my heart</p>
+      <div class="memories-card english">
+        <span style="font-size: 2.2rem;">🕊️✨</span>
+        <h1 class="fade-in" style="margin-top: 0.8rem;">Our Precious Memories</h1>
+        <div class="divider fade-in fade-in-delay-1"></div>
+        <p class="fade-in fade-in-delay-2">
+          "Memory is a way of holding onto the things you love, the things you are, and the things you never want to lose."
+        </p>
+        <p class="fade-in fade-in-delay-3" style="font-size: 1rem; color: var(--gold); margin-top: 1rem;">
+          Here are a few beautiful moments captured in time...
+        </p>
+        <button class="btn fade-in fade-in-delay-4" onclick="goToStage(5)" style="margin-top: 1.8rem;">
+          VIEW PHOTOS 📸 →
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== STAGE 5: Photo Gallery ==================== -->
+    <section class="stage" id="stage5" data-stage="5">
+      <div class="gallery-header english" style="text-align: center; margin-bottom: 1.5rem;">
+        <h1 class="fade-in" style="font-size: 1.8rem; color: var(--gold-soft);">Captured Moments</h1>
+        <p class="subtitle fade-in fade-in-delay-1" style="font-size: 0.95rem; color: var(--text-soft); font-style: italic;">Every picture tells a story of us</p>
       </div>
 
       <div class="gallery">
@@ -676,15 +494,12 @@
           <!-- Photo 1 -->
           <div class="slide">
             <div class="photo-frame">
-              <!-- REPLACE THIS PLACEHOLDER with your photo -->
+              <!-- برای گذاشتن عکس، خط پایین را پاک کن و از این استفاده کن: <img src="اسم_عکس.jpg" alt="Memory 1" /> -->
               <div class="photo-placeholder">
                 <span>📷</span>
                 <p>عکس ۱</p>
-                <small style="opacity:0.6; font-size:0.75rem;">اینجا عکس بگذار</small>
+                <small style="opacity:0.6; font-size:0.75rem;">آدرس عکس ۱ را بگذارید</small>
               </div>
-              <!-- مثال:
-              <img src="photo1.jpg" alt="خاطره قشنگ" />
-              -->
             </div>
           </div>
 
@@ -694,7 +509,7 @@
               <div class="photo-placeholder">
                 <span>📷</span>
                 <p>عکس ۲</p>
-                <small style="opacity:0.6; font-size:0.75rem;">اینجا عکس بگذار</small>
+                <small style="opacity:0.6; font-size:0.75rem;">آدرس عکس ۲ را بگذارید</small>
               </div>
             </div>
           </div>
@@ -705,7 +520,7 @@
               <div class="photo-placeholder">
                 <span>📷</span>
                 <p>عکس ۳</p>
-                <small style="opacity:0.6; font-size:0.75rem;">اینجا عکس بگذار</small>
+                <small style="opacity:0.6; font-size:0.75rem;">آدرس عکس ۳ را بگذارید</small>
               </div>
             </div>
           </div>
@@ -716,51 +531,45 @@
               <div class="photo-placeholder">
                 <span>📷</span>
                 <p>عکس ۴</p>
-                <small style="opacity:0.6; font-size:0.75rem;">اینجا عکس بگذار</small>
+                <small style="opacity:0.6; font-size:0.75rem;">آدرس عکس ۴ را بگذارید</small>
               </div>
             </div>
           </div>
         </div>
 
         <div class="gallery-nav">
-          <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)" aria-label="Previous photo">‹</button>
+          <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">‹</button>
           <div class="dots" id="dots"></div>
-          <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)" aria-label="Next photo">›</button>
+          <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">›</button>
         </div>
       </div>
 
-      <button class="btn" onclick="goToStage(5)" style="margin-top: 1.8rem;">
-        One last thing →
+      <button class="btn" onclick="goToStage(6)" style="margin-top: 1.8rem;">
+        ONE LAST THING →
       </button>
     </section>
 
-    <!-- ==================== STAGE 5: Final Emotional Screen ==================== -->
-    <section class="stage" id="stage5" data-stage="5">
+    <!-- ==================== STAGE 6: Final Wish ==================== -->
+    <section class="stage" id="stage6" data-stage="6">
       <div class="glow-orb" style="bottom: 10%; left: 50%; transform: translateX(-50%); width: 320px; height: 320px;"></div>
-      <div class="final-content english">
-        <h1 class="fade-in">Happy</h1>
-        <div class="age fade-in fade-in-delay-1">17th Birthday</div>
+      <div class="final-content english" style="text-align: center; max-width: 380px;">
+        <h1 class="fade-in" style="font-size: 2.2rem; color: var(--gold-soft);">Happy Birthday</h1>
+        <div class="age fade-in fade-in-delay-1" style="font-size: 3rem; font-weight: 500; color: var(--rose); margin: 0.5rem 0;">Dearest Asma</div>
         <div class="divider fade-in fade-in-delay-2"></div>
-        <p class="fade-in fade-in-delay-3">
-          I hope every year of your life becomes more beautiful than the one before it —
-          full of peace, success, laughter and beautiful moments.
+        <p class="fade-in fade-in-delay-3" style="font-size: 1.15rem; color: var(--text-soft); font-style: italic;">
+          May your life be filled with endless joy, peace, love, and laughter. You deserve all the happiness in the world.
         </p>
-        <p class="fade-in fade-in-delay-4">
-          Today is your day.<br />
-          So smile. ✨
+        <p class="closing fade-in" style="margin-top: 1.5rem; font-size: 1.2rem; color: var(--cream); font-weight: 500;">
+          Forever & Always ❤️
         </p>
-        <p class="closing fade-in" style="animation-delay: 0.8s;">
-          With all my heart
-        </p>
-        <div class="hearts fade-in" style="animation-delay: 1s;">❤️ ✨ ❤️</div>
       </div>
     </section>
   </div>
 
   <script>
-    // ========== Stage Navigation ==========
+    // Navigation
     let currentStage = 1;
-    const totalStages = 5;
+    const totalStages = 6;
 
     function goToStage(n) {
       if (n < 1 || n > totalStages || n === currentStage) return;
@@ -776,20 +585,18 @@
         next.classList.add('active');
         currentStage = n;
 
-        // Restart fade-in animations for the new stage
         const fades = next.querySelectorAll('.fade-in');
         fades.forEach(el => {
           el.style.animation = 'none';
-          el.offsetHeight; // trigger reflow
+          el.offsetHeight;
           el.style.animation = null;
         });
 
-        // Scroll to top of stage if needed
         next.scrollTop = 0;
       }, 400);
     }
 
-    // ========== Photo Gallery ==========
+    // Photo Gallery
     let currentSlide = 0;
     const track = document.getElementById('galleryTrack');
     const slides = track ? track.querySelectorAll('.slide') : [];
@@ -805,7 +612,6 @@
       for (let i = 0; i < totalSlides; i++) {
         const dot = document.createElement('button');
         dot.className = 'dot' + (i === 0 ? ' active' : '');
-        dot.setAttribute('aria-label', 'Go to photo ' + (i + 1));
         dot.onclick = () => goToSlide(i);
         dotsContainer.appendChild(dot);
       }
@@ -832,26 +638,7 @@
       if (nextBtn) nextBtn.disabled = currentSlide === totalSlides - 1;
     }
 
-    // Touch swipe support for gallery
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    if (track) {
-      track.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-      }, { passive: true });
-
-      track.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        const diff = touchStartX - touchEndX;
-        if (Math.abs(diff) > 50) {
-          if (diff > 0) changeSlide(1);
-          else changeSlide(-1);
-        }
-      }, { passive: true });
-    }
-
-    // ========== Soft Particles ==========
+    // Particles
     function createParticles() {
       const container = document.getElementById('particles');
       if (!container) return;
@@ -870,28 +657,15 @@
         p.style.top = Math.random() * 100 + '%';
         p.style.animationDuration = (14 + Math.random() * 16) + 's';
         p.style.animationDelay = (Math.random() * 10) + 's';
-        p.style.opacity = 0.12 + Math.random() * 0.2;
-
-        if (!isHeart) {
-          p.style.background = Math.random() > 0.5 ? 'var(--rose)' : 'var(--gold-soft)';
-        }
 
         container.appendChild(p);
       }
     }
 
-    // ========== Init ==========
     document.addEventListener('DOMContentLoaded', () => {
       createParticles();
       initGallery();
     });
-
-    // Prevent accidental pull-to-refresh on mobile while navigating
-    document.body.addEventListener('touchmove', function (e) {
-      if (e.target.closest('.stage') && e.target.closest('.stage').scrollTop === 0) {
-        // allow normal scroll inside stages that need it
-      }
-    }, { passive: true });
   </script>
 </body>
 </html>
