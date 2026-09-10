@@ -15,8 +15,8 @@
       --gold-soft: #f5e6c8;
       --cream: #faf4ed;
       --text-soft: #d8c9cd;
-      --glow: rgba(232, 180, 184, 0.38);
-      --glow-strong: rgba(232, 180, 184, 0.58);
+      --glow: rgba(232, 180, 184, 0.45);
+      --glow-strong: rgba(232, 180, 184, 0.75);
     }
 
     * {
@@ -60,7 +60,7 @@
       background: transparent;
       width: 10px;
       height: 10px;
-      opacity: 0.18;
+      opacity: 0.3;
     }
 
     .particle.heart::before,
@@ -87,7 +87,7 @@
 
     @keyframes float {
       0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.2; }
-      50% { transform: translateY(-20px) translateX(-8px) scale(0.95); opacity: 0.3; }
+      50% { transform: translateY(-25px) translateX(-10px) scale(1.05); opacity: 0.4; }
     }
 
     .stages {
@@ -104,25 +104,28 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 1.8rem 1.4rem;
+      padding: 2rem 1.4rem;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(24px);
-      transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-                  visibility 0.85s;
+      transform: scale(0.92) translateY(30px);
+      transition: opacity 1.4s cubic-bezier(0.25, 1, 0.3, 1),
+                  transform 1.4s cubic-bezier(0.25, 1, 0.3, 1),
+                  filter 1.4s ease,
+                  visibility 1.4s;
       overflow-y: auto;
     }
 
     .stage.active {
       opacity: 1;
       visibility: visible;
-      transform: translateY(0);
+      transform: scale(1) translateY(0);
+      filter: blur(0px);
     }
 
     .stage.leaving {
       opacity: 0;
-      transform: translateY(-18px);
+      transform: scale(1.06) translateY(-30px);
+      filter: blur(8px);
     }
 
     .english {
@@ -134,7 +137,7 @@
       font-family: 'Vazirmatn', sans-serif;
       direction: rtl;
       text-align: center;
-      line-height: 2;
+      line-height: 2.2;
     }
 
     h1 {
@@ -142,36 +145,44 @@
       line-height: 1.35;
     }
 
+    /* Romantic Glowing Button */
     .btn {
+      position: relative;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      margin-top: 1.8rem;
-      padding: 0.9rem 2.1rem;
+      margin-top: 2rem;
+      padding: 1.1rem 2.6rem;
       font-family: 'Vazirmatn', 'Playfair Display', serif;
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 500;
       color: var(--bg-deep);
-      background: linear-gradient(135deg, var(--gold-soft) 0%, var(--rose) 100%);
+      background: linear-gradient(135deg, #fce4ec 0%, var(--gold-soft) 50%, var(--rose) 100%);
       border: none;
       border-radius: 999px;
       cursor: pointer;
-      box-shadow: 0 4px 24px var(--glow);
-      transition: all 0.35s ease;
+      box-shadow: 0 8px 30px var(--glow), 0 0 18px rgba(255, 255, 255, 0.4);
+      transition: all 0.6s ease;
+      overflow: hidden;
+      animation: pulseGlow 3.5s infinite ease-in-out;
     }
 
-    .btn:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 8px 32px var(--glow-strong);
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 8px 30px var(--glow), 0 0 15px rgba(232, 180, 184, 0.3); transform: scale(1); }
+      50% { box-shadow: 0 12px 42px var(--glow-strong), 0 0 25px rgba(232, 180, 184, 0.6); transform: scale(1.02); }
+    }
+
+    .btn:active {
+      transform: scale(0.95);
     }
 
     .divider {
-      width: 60px;
+      width: 75px;
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--rose), transparent);
-      margin: 1.4rem auto;
-      opacity: 0.7;
+      margin: 1.5rem auto;
+      opacity: 0.8;
     }
 
     /* Stage 1 */
@@ -208,83 +219,112 @@
     #stage3 .message-card {
       max-width: 420px;
       width: 100%;
-      background: linear-gradient(160deg, rgba(42, 26, 40, 0.85) 0%, rgba(26, 18, 32, 0.9) 100%);
-      border: 1px solid rgba(232, 180, 184, 0.18);
-      border-radius: 20px;
-      padding: 2rem 1.5rem;
-      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.35);
+      background: linear-gradient(160deg, rgba(42, 26, 40, 0.88) 0%, rgba(26, 18, 32, 0.92) 100%);
+      border: 1px solid rgba(232, 180, 184, 0.25);
+      border-radius: 24px;
+      padding: 2.2rem 1.6rem;
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(232, 180, 184, 0.15);
+      backdrop-filter: blur(10px);
     }
 
     #stage3 .heart-top {
-      font-size: 1.8rem;
+      font-size: 2.2rem;
       margin-bottom: 0.8rem;
       text-align: center;
+      animation: heartBeat 1.8s infinite ease-in-out;
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.18); }
     }
 
     #stage3 .persian p {
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.9rem;
     }
 
     #stage3 .signature {
       margin-top: 1.2rem;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       color: var(--rose);
       font-weight: 600;
       text-align: center;
+      letter-spacing: 1px;
     }
 
     /* Stage 4 - Separate & Clear Photos Layout */
     .gift-container {
       cursor: pointer;
       text-align: center;
-      margin: 1.5rem 0;
-      transition: transform 0.3s ease;
+      margin: 2rem 0;
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .gift-container:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
 
     .gift-box {
-      font-size: 5rem;
-      animation: bounce 2s infinite ease-in-out;
+      font-size: 5.8rem;
+      animation: bounce 2.2s infinite ease-in-out;
+      filter: drop-shadow(0 12px 25px rgba(232, 180, 184, 0.45));
     }
 
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
+      50% { transform: translateY(-16px); }
     }
 
+    /* Photos are strictly separated and clear */
     .gallery-container {
       display: none;
       flex-direction: column;
-      gap: 32px;
+      gap: 40px; /* High spacing so images don't overlap */
       width: 100%;
-      max-width: 340px;
+      max-width: 350px;
       margin-top: 1.5rem;
       align-items: center;
     }
 
     .gallery-container.show {
       display: flex;
-      animation: fadeIn 0.8s ease forwards;
     }
 
     .photo-card {
       width: 100%;
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-      border: 1px solid rgba(232, 180, 184, 0.35);
-      padding: 12px;
-      border-radius: 18px;
-      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.65);
-      transform: none !important;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+      border: 1px solid rgba(232, 180, 184, 0.4);
+      padding: 14px;
+      border-radius: 22px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.75), 0 0 25px rgba(232, 180, 184, 0.2);
+      opacity: 0;
+      transform: translateY(40px) scale(0.92);
+      transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .gallery-container.show .photo-card:nth-child(1) {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      transition-delay: 0.3s;
+    }
+
+    .gallery-container.show .photo-card:nth-child(2) {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      transition-delay: 0.8s;
+    }
+
+    .gallery-container.show .photo-card:nth-child(3) {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      transition-delay: 1.3s;
     }
 
     .photo-card img {
       width: 100%;
-      height: 280px;
+      height: 310px;
       object-fit: cover;
-      border-radius: 12px;
+      border-radius: 16px;
       display: block;
     }
 
@@ -292,19 +332,20 @@
     #stage5 .poem-card {
       max-width: 420px;
       width: 100%;
-      background: linear-gradient(160deg, rgba(42, 26, 40, 0.85) 0%, rgba(26, 18, 32, 0.9) 100%);
-      border: 1px solid rgba(232, 180, 184, 0.2);
-      border-radius: 20px;
-      padding: 2rem 1.5rem;
-      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.35);
+      background: linear-gradient(160deg, rgba(42, 26, 40, 0.88) 0%, rgba(26, 18, 32, 0.92) 100%);
+      border: 1px solid rgba(232, 180, 184, 0.25);
+      border-radius: 24px;
+      padding: 2.2rem 1.6rem;
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(232, 180, 184, 0.15);
       text-align: center;
+      backdrop-filter: blur(10px);
     }
 
     #stage5 .persian-poem {
       font-family: 'Vazirmatn', sans-serif;
       direction: rtl;
-      line-height: 2.3;
-      font-size: 1.05rem;
+      line-height: 2.4;
+      font-size: 1.08rem;
       color: var(--gold-soft);
       margin: 1rem 0;
     }
@@ -312,26 +353,26 @@
     #stage5 .sweet-message {
       font-family: 'Vazirmatn', sans-serif;
       direction: rtl;
-      line-height: 2;
-      font-size: 1rem;
+      line-height: 2.1;
+      font-size: 1.02rem;
       color: var(--cream);
-      margin-top: 1.2rem;
-      padding-top: 1rem;
-      border-top: 1px dashed rgba(232, 180, 184, 0.25);
+      margin-top: 1.4rem;
+      padding-top: 1.2rem;
+      border-top: 1px dashed rgba(232, 180, 184, 0.3);
     }
 
     .glow-orb {
       position: absolute;
-      width: 280px;
-      height: 280px;
+      width: 320px;
+      height: 320px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(232, 180, 184, 0.12) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(232, 180, 184, 0.15) 0%, transparent 70%);
       pointer-events: none;
       z-index: -1;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
@@ -377,10 +418,10 @@
             امروز خیلی خیلی خوشحال استم، چون امروز یکی از مهم‌ترین روزهای زندگیم (تولد عشقم) است؛ در این روز، فرشته‌ای به این زیبایی و مقبولی به اسم اسما خانم به دنیا آمده.
           </p>
           <p>
-            و امروز خوشبختانه می‌توان گفت ؛ که این دختر مقبول، مهم‌ترین فرد زندگی من میاشد و خیلی خیلی زیاد دوستش دارم و عاشقش استم .
+            و خوشبختانه می‌توان گفت ؛ که این دختر مقبول، مهم‌ترین فرد زندگی ایشان میباشد و خیلی زیاد دوستش هم دارد و عاشق دیوانه وار اسمای خود میباش .
           </p>
           <p>
-             یوسف الرحمٰن،  تولدتان را برای تان تبریک و تهنیت عرض می‌دارد. امیدوارم همیشه در زندگیتان کامیاب، ، موفق و سربلند و سرفراز باشیید و همیشه  در پناه خداوند باشید.
+             یوسف الرحمٰن، تولدتان را برای تان تبریک و تهنیت عرض می‌دارد. و امید دارد که همیشه در زندگیتان کامیاب، ، موفق و سربلند و سرفراز باشید و همیشه در پناه خداوند باشید.
           </p>
           <p>
             تولدت مبارک عزیز دلم؛ ان‌شاءالله همیشه سالم، خوشحال و لبخند به لب باشی. 💝
@@ -388,7 +429,7 @@
         </div>
         <p class="signature">— yousuf</p>
       </div>
-      <button class="btn" onclick="goToStage(4)" style="margin-top: 1.8rem;">
+      <button class="btn" onclick="goToStage(4)">
         یک سورپرایز دیگه →
       </button>
     </section>
@@ -410,7 +451,7 @@
         <div class="photo-card"><img src="IMG_9441.jpeg" alt="Memory 3" /></div>
       </div>
 
-      <button class="btn english" id="nextStageBtn" onclick="goToStage(5)" style="display: none; margin-top: 1.5rem;">One Last Thing →</button>
+      <button class="btn english" id="nextStageBtn" onclick="goToStage(5)" style="display: none; margin-top: 2rem;">One Last Thing →</button>
     </section>
 
     <!-- STAGE 5: Persian Poem & Sweet Message -->
@@ -425,7 +466,7 @@
         </div>
         
         <div class="sweet-message">
-          <p>اسما قندم، شیرین‌تر از نباتم، نفس جانم...🌸</p>
+          <p>جان دلم ، اسمای قشنگم..🌸</p>
           <p>تو قشنگ‌ترین اتفاق زندگی من استی. بودنت همیشه قلبم را گرم می‌کند و لبخندت تمام دنیای من است. تا ابد دوستت دارم نازنین من! 💕✨</p>
         </div>
 
@@ -437,8 +478,12 @@
 
   <script>
     let currentStage = 1;
+    let isTransitioning = false;
 
     function goToStage(n) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+
       const current = document.getElementById('stage' + currentStage);
       const next = document.getElementById('stage' + n);
       if (!next) return;
@@ -450,7 +495,8 @@
         current.classList.remove('leaving');
         next.classList.add('active');
         currentStage = n;
-      }, 400);
+        isTransitioning = false;
+      }, 1000); /* 1 second gentle romantic delay */
     }
 
     function openGift() {
@@ -459,21 +505,30 @@
       const instruction = document.getElementById('giftInstruction');
       const nextBtn = document.getElementById('nextStageBtn');
 
-      giftBox.style.display = 'none';
-      instruction.style.display = 'none';
-      photosGrid.classList.add('show');
-      nextBtn.style.display = 'inline-flex';
+      giftBox.style.transform = 'scale(0) rotate(180deg)';
+      giftBox.style.transition = 'all 1s ease';
+
+      setTimeout(() => {
+        giftBox.style.display = 'none';
+        instruction.style.display = 'none';
+        photosGrid.classList.add('show');
+        
+        setTimeout(() => {
+          nextBtn.style.display = 'inline-flex';
+          nextBtn.style.animation = 'fadeIn 1.2s ease forwards';
+        }, 1800);
+      }, 800);
     }
 
     function createParticles() {
       const container = document.getElementById('particles');
-      for (let i = 0; i < 22; i++) {
+      for (let i = 0; i < 25; i++) {
         const p = document.createElement('div');
-        const isHeart = Math.random() > 0.7;
+        const isHeart = Math.random() > 0.65;
         p.className = 'particle' + (isHeart ? ' heart' : '');
         p.style.left = Math.random() * 100 + '%';
         p.style.top = Math.random() * 100 + '%';
-        p.style.animationDuration = (12 + Math.random() * 10) + 's';
+        p.style.animationDuration = (10 + Math.random() * 12) + 's';
         container.appendChild(p);
       }
     }
