@@ -187,7 +187,7 @@
       font-size: clamp(1.9rem, 6.5vw, 2.8rem);
     }
 
-    /* Stage 2 - Wishes */
+    /* Stage 2 */
     #stage2 .content {
       max-width: 390px;
     }
@@ -233,7 +233,7 @@
       text-align: center;
     }
 
-    /* Stage 4 - Separate Photos */
+    /* Stage 4 - Dynamic Photos Layout */
     .gift-container {
       cursor: pointer;
       text-align: center;
@@ -258,10 +258,11 @@
     .gallery-container {
       display: none;
       flex-direction: column;
-      gap: 20px;
+      gap: 25px;
       width: 100%;
       max-width: 320px;
       margin-top: 1.2rem;
+      align-items: center;
     }
 
     .gallery-container.show {
@@ -270,38 +271,60 @@
     }
 
     .photo-card {
-      width: 100%;
-      height: 260px;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(232, 180, 184, 0.35);
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
-      background: rgba(255, 255, 255, 0.03);
-      padding: 6px;
+      width: 88%;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(232, 180, 184, 0.3);
+      padding: 10px 10px 18px 10px;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+      transition: transform 0.4s ease;
     }
 
     .photo-card img {
       width: 100%;
-      height: 100%;
+      height: 220px;
       object-fit: cover;
-      border-radius: 12px;
+      border-radius: 8px;
     }
 
-    /* Stage 5 - Poem */
-    #stage5 .poem-box {
-      max-width: 380px;
-      font-style: italic;
-      line-height: 1.8;
+    .photo-card:nth-child(1) {
+      transform: rotate(-3deg) translateX(-8px);
+    }
+
+    .photo-card:nth-child(2) {
+      transform: rotate(3deg) translateX(8px);
+    }
+
+    .photo-card:nth-child(3) {
+      transform: rotate(-2deg) translateY(-4px);
+    }
+
+    /* Stage 5 - Rumi Poem */
+    #stage5 .poem-card {
+      max-width: 400px;
+      width: 100%;
+      background: linear-gradient(160deg, rgba(42, 26, 40, 0.85) 0%, rgba(26, 18, 32, 0.9) 100%);
+      border: 1px solid rgba(232, 180, 184, 0.2);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.35);
+      text-align: center;
+    }
+
+    #stage5 .persian-poem {
+      font-family: 'Vazirmatn', sans-serif;
+      direction: rtl;
+      line-height: 2.2;
+      font-size: 1.05rem;
       color: var(--gold-soft);
-      margin: 1.2rem 0;
-      font-size: 1.15rem;
+      margin: 1rem 0;
     }
 
     #stage5 .poem-author {
       font-size: 0.95rem;
       color: var(--rose);
-      margin-top: 0.8rem;
-      letter-spacing: 0.1em;
+      margin-top: 1rem;
+      font-weight: 600;
     }
 
     .glow-orb {
@@ -336,7 +359,7 @@
       </div>
     </section>
 
-    <!-- STAGE 2: English Wishes -->
+    <!-- STAGE 2 -->
     <section class="stage" id="stage2" data-stage="2">
       <div class="content english">
         <h1>Wishes For Your Special Day ✨</h1>
@@ -353,11 +376,22 @@
       <div class="message-card">
         <div class="heart-top">❤️</div>
         <div class="persian">
-          <p>سلام به مامانی عزیز و مقبولم ❤️</p>
-          <p>خدا کنه که خوب، صحتمند و سرحال باشی عزیز دلم. امروز خیلی خیلی خوشحال استم، چون امروز یکی از مهم‌ترین روزهای زندگیم (تولد عشقم) است؛ در این روز، فرشته‌ای به این زیبایی و مقبولی به اسم اسما خانم به دنیا آمد.</p>
-          <p>و امروز خوشبختانه می‌توانم بگویم که این دختر مقبول، مهم‌ترین فرد زندگی من است و خیلی خیلی زیاد دوستش دارم.</p>
-          <p>از صمیم قلب، یوسف، تولدتان را برای تان تبریک عرض می‌دارد. امیدوارم همیشه در زندگیت کامیاب، سرفراز، موفق و سربلند باشی و خداوند همیشه تو را از هر بلا و بدی دور نگه دارد.</p>
-          <p>تولدت مبارک عزیز دلم؛ ان‌شاءالله همیشه سالم، خوشحال و لبخند به لب باشی. ❤️</p>
+          <p>
+            سلام به مامانی عزیز و مقبولم ❤️
+          </p>
+          <p>
+            خدا کنه که خوب، صحتمند و سرحال باشی عزیز دلم.  
+            امروز خیلی خیلی خوشحال استم، چون امروز یکی از مهم‌ترین روزهای زندگیم (تولد عشقم) است؛ در این روز، فرشته‌ای به این زیبایی و مقبولی به اسم اسما خانم به دنیا آمده.
+          </p>
+          <p>
+            و امروز خوشبختانه می‌توان گفت ؛ که این دختر مقبول، مهم‌ترین فرد زندگی من میاشد و خیلی خیلی زیاد دوستش دارم و عاشقش استم .
+          </p>
+          <p>
+             یوسف الرحمٰن،  تولدتان را برای تان تبریک عرض می‌دارد. امیدوارم همیشه در زندگیتان کامیاب، ، موفق و سربلند و سرفراز باشی و همیشه  در پناه خداوند باشی.
+          </p>
+          <p>
+            تولدت مبارک عزیز دلم؛ ان‌شاءالله همیشه سالم، خوشحال و لبخند به لب باشی. ❤️
+          </p>
         </div>
         <p class="signature">— یوسف</p>
       </div>
@@ -366,7 +400,7 @@
       </button>
     </section>
 
-    <!-- STAGE 4: Photos -->
+    <!-- STAGE 4 -->
     <section class="stage" id="stage4" data-stage="4">
       <div class="english">
         <h1>Unwrap Your Gift 🎁</h1>
@@ -386,20 +420,19 @@
       <button class="btn english" id="nextStageBtn" onclick="goToStage(5)" style="display: none; margin-top: 1.5rem;">One Last Thing →</button>
     </section>
 
-    <!-- STAGE 5: English Poem -->
+    <!-- STAGE 5: Persian Rumi Poem -->
     <section class="stage" id="stage5" data-stage="5">
-      <div class="final-content english">
-        <h1>Happy 17th Birthday ✨</h1>
-        <div class="divider"></div>
-        <div class="poem-box">
-          <p>“I love you as certain dark things are to be loved,</p>
-          <p>in secret, between the shadow and the soul.</p>
-          <p>I love you without knowing how, or when, or from where.</p>
-          <p>I love you straightforwardly, without complexities or pride.”</p>
-          <p class="poem-author">— Pablo Neruda</p>
+      <div class="poem-card">
+        <div class="heart-top">✨</div>
+        <div class="persian-poem">
+          <p>«من غلام قمرم غیر قمر هیچ مگو</p>
+          <p>پیش من جز سخن شمع و شکر هیچ مگو</p>
+          <p>سخن رنج مگو جز ز ترنجی مگو</p>
+          <p>ور ز خیالی نه جز از روح و نظر هیچ مگو»</p>
+          <p class="poem-author">— مولانا (دیوان شمس)</p>
         </div>
         <div class="divider"></div>
-        <p style="margin-top: 1rem; font-weight: 600; color: var(--rose); font-size: 1.1rem;">With all my heart, Forever ❤️</p>
+        <p style="font-weight: 600; color: var(--rose); font-size: 1.1rem; text-align: center;">همیشه در قلب من هستی ❤️</p>
       </div>
     </section>
   </div>
